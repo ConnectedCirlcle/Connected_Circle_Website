@@ -1,0 +1,91 @@
+Create a responsive, warm, and inviting website for the Heart & Household podcast. The site will showcase podcast episodes, introduce the hosts, provide surveys and listener engagement features, and reflect the brand’s mission of nurturing emotional, practical, and relational well-being within families.
+
+🎯 Website Purpose
+The purpose of this website is to:
+
+Introduce visitors to the Heart & Household podcast
+
+Share new and archived episodes
+
+Host surveys and forms for listener feedback and focus group interest
+
+Connect with a growing community of families
+
+Reflect the values of warmth, support, honesty, and empowerment
+
+🧡 Podcast Description
+Heart & Household is a podcast dedicated to nurturing the emotional, practical, and relational well-being of families. Through honest conversations, expert insights, and real-life stories, we explore the everyday dynamics of parenting, partnerships, money management, and health—both physical and mental. Our mission is to support, empower, and connect listeners as they navigate the beautiful, messy, and meaningful journey of building a strong, healthy household from the inside out.
+
+🎨 Brand Color Palette
+Color	Hex	Use Case
+Rust Red	#B2593C	Primary buttons, headers, accents
+Olive Green	#858461	Secondary buttons, tags, quotes
+Cream Beige	#F8F1E6	Background, section dividers
+Use soft serif or friendly sans-serif fonts. The overall vibe should be warm, clean, and approachable.
+
+📄 Website Structure & Features
+1. Homepage
+Logo top left or center
+
+Hero section with a short mission quote and a CTA button (e.g., "Listen Now")
+
+Featured episode carousel with embedded players
+
+Testimonial/quote slider
+
+Email newsletter signup form
+
+2. About Page
+Full mission statement
+
+Host bios and photos
+
+Core values section
+
+3. Episodes Page
+List of episodes with:
+
+Title
+
+Summary
+
+Tags (Parenting, Wellness, etc.)
+
+Embedded podcast player
+
+Share buttons
+
+4. Topics Page
+Visual tiles or buttons for major recurring themes (e.g., Parenting, Mental Health)
+
+Clicking a tile filters the episodes relevant to that topic
+
+5. Community Page
+Survey Center – Embedded Google Forms or Typeform
+
+Listener Input Form – Open-ended submissions for questions, stories, feedback
+
+Focus Group Sign-Ups – Optional embedded Calendly or interest form
+
+Simple poll or interactive quick vote
+
+6. Blog Page (Optional)
+Posts expanding on episode topics
+
+Guest contributions or listener-submitted stories
+
+7. Contact Page
+General contact form
+
+Social media icons
+
+Podcast platform buttons (Spotify, Apple, etc.)
+
+8. Footer
+Mini logo
+
+Navigation links
+
+Newsletter sign-up
+
+“Made with ❤️ by Heart & Household”
