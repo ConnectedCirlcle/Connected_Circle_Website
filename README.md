@@ -1,99 +1,209 @@
-# Heart & Household Podcast Website
+# Connected Circles Website
 
-A responsive website for the Heart & Household podcast, featuring episode listings, newsletter signup, contact form, and interactive polls.
+A modern podcast website for Connected Circles - focused on personal growth, community building, and meaningful conversations.
 
-## Local Development
+## 🌟 Features
+
+- **Buzzsprout API Integration**: Automatic episode fetching from Buzzsprout podcast hosting
+- **Responsive Design**: Mobile-first design with modern UI/UX
+- **Community Features**: Multiple platform integration (YouTube, Twitch, Discord, Reddit)
+- **Contact Forms**: Web3Forms integration for contact and topic suggestions
+- **SEO Optimized**: Proper meta tags and structured content
+- **Performance Optimized**: Fast loading with modern build tools
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js (v18 or later)
-- npm (v9 or later)
-- PostgreSQL database (for production)
+- Node.js 18+
+- npm or yarn
 
-### Setup
+### Installation
 
-1. Clone the repository
+1. Clone the repository:
+
+```bash
+git clone https://github.com/ConnectedCirlcle/Connected_Circle_Website.git
+cd Connected_Circle_Website
+```
+
 2. Install dependencies:
-   ```
-   npm install
-   ```
-3. Create a `.env` file based on `.env.example` and add your database connection string
-4. Run the development server:
-   ```
-   npm run dev
-   ```
 
-## Building for Production
+```bash
+npm install
+```
 
-To build the project for production:
+3. Set up environment variables:
+
+```bash
+cp .env.example .env
+```
+
+4. Update the `.env` file with your configuration:
+
+```env
+# Buzzsprout API configuration
+BUZZSPROUT_API_TOKEN=your_api_token_here
+BUZZSPROUT_PODCAST_ID=2489424
+
+# Web3Forms access key
+WEB3FORMS_ACCESS_KEY=your_web3forms_key_here
+
+# Database (if needed)
+DATABASE_URL=your_database_url_here
+```
+
+5. Start the development server:
+
+```bash
+npm run dev
+```
+
+## 📦 Deployment
+
+### Netlify Deployment
+
+This project is configured for Netlify deployment with:
+
+- **Build Command**: `npm run build`
+- **Publish Directory**: `dist`
+- **Functions Directory**: `netlify/functions`
+
+#### Environment Variables for Netlify:
+
+Set these in your Netlify dashboard:
 
 ```
+VITE_BUZZSPROUT_PODCAST_ID=2489424
+VITE_BUZZSPROUT_API_TOKEN=your_api_token
+WEB3FORMS_ACCESS_KEY=your_web3forms_key
+```
+
+#### Automatic Deployment:
+
+- Connect your Netlify account to this GitHub repository
+- Enable automatic deployments from the `main` branch
+- The site will automatically rebuild when you push changes
+
+### Manual Deployment:
+
+1. Build the project:
+
+```bash
 npm run build
 ```
 
-This will create a `dist` directory with the compiled client and server code.
+2. Deploy the `dist` folder to your hosting provider
 
-## Deploying to Netlify
+## 🛠️ Technology Stack
 
-### Method 1: Netlify UI
+- **Frontend**: React 18, TypeScript, Vite
+- **Styling**: Tailwind CSS
+- **Routing**: Wouter
+- **API Integration**: Buzzsprout API
+- **Forms**: Web3Forms
+- **Deployment**: Netlify
+- **Version Control**: Git/GitHub
 
-1. Push your code to a Git repository (GitHub, GitLab, or Bitbucket)
-2. Log in to Netlify and click "New site from Git"
-3. Select your repository and configure the build settings:
-   - Build command: `npm run netlify:build`
-   - Publish directory: `dist/public`
-4. Configure environment variables in the Netlify UI:
-   - Add `DATABASE_URL` with your PostgreSQL connection string
-5. Deploy the site
+## 📁 Project Structure
 
-### Method 2: Netlify CLI
+```
+├── client/                 # Frontend application
+│   ├── public/            # Static assets
+│   ├── src/
+│   │   ├── components/    # React components
+│   │   ├── pages/         # Page components
+│   │   ├── lib/           # Utilities and API functions
+│   │   ├── data/          # Static data and configurations
+│   │   └── index.css      # Global styles
+├── server/                # Backend server (if needed)
+├── netlify/               # Netlify functions
+├── shared/                # Shared types and schemas
+└── netlify.toml          # Netlify configuration
+```
 
-1. Install the Netlify CLI:
-   ```
-   npm install -g netlify-cli
-   ```
-2. Login to Netlify:
-   ```
-   netlify login
-   ```
-3. Initialize your site:
-   ```
-   netlify init
-   ```
-4. Deploy your site:
-   ```
-   netlify deploy --prod
-   ```
+## 🔧 Configuration
 
-## Environment Variables
+### Buzzsprout Integration
 
-- `DATABASE_URL`: PostgreSQL connection string
-- `NODE_ENV`: Set to `production` for production builds
-- `PORT`: Server port (default: 5000, only used in development)
+The website automatically fetches episodes from Buzzsprout using:
 
-## Troubleshooting npm Issues
+- **Podcast ID**: 2489424
+- **API Token**: Configured in environment variables
 
-If you encounter issues with npm commands on Windows:
+### Web3Forms Integration
 
-1. Make sure you're using the latest version of npm:
+Contact forms and topic suggestions use Web3Forms for:
 
-   ```
-   npm install -g npm@latest
-   ```
+- Contact form submissions
+- Topic suggestion submissions
+- Newsletter signups
 
-2. Use the cross-env package for environment variables:
+## 🎨 Customization
 
-   ```
-   npm run dev
-   ```
+### Brand Colors
 
-3. If you get ENOENT errors, check your file paths for correct casing and slashes.
+The website uses a custom color palette defined in `tailwind.config.ts`:
 
-4. For permission issues, try running your terminal as administrator.
+- **Electric Blue**: #007BFF
+- **Vibrant Green**: #28A745
+- **Rich Violet**: #6F42C1
+- **Medium Purple**: #8E44AD
 
-## Project Structure
+### Content Updates
 
-- `client/`: Frontend React application
-- `server/`: Backend Express API
-- `shared/`: Shared code between client and server
-- `netlify/functions/`: Serverless functions for Netlify deployment
+- **Episodes**: Automatically fetched from Buzzsprout
+- **Host Information**: Update in `client/src/data/hosts.ts`
+- **Testimonials**: Update in `client/src/data/testimonials.ts`
+
+## 📱 Social Media Integration
+
+The website includes integration with:
+
+- **YouTube**: https://youtube.com/@connectedcircles?si=MOcqdqUBEthj9xRf
+- **Twitch**: https://twitch.tv/connectedcircles (Coming Soon)
+- **Discord**: Community server (Coming Soon)
+- **Reddit**: Discussion community (Coming Soon)
+
+## 🔒 Security
+
+- Environment variables for sensitive data
+- CSRF protection on forms
+- Input sanitization with DOMPurify
+- Secure API token handling
+
+## 📈 Analytics & SEO
+
+- Proper meta tags and Open Graph data
+- Structured data for search engines
+- Performance optimized with lazy loading
+- Mobile-first responsive design
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/new-feature`
+3. Commit your changes: `git commit -m 'Add new feature'`
+4. Push to the branch: `git push origin feature/new-feature`
+5. Submit a pull request
+
+## 📄 License
+
+This project is proprietary and confidential. All rights reserved.
+
+## 📞 Support
+
+For technical support or questions:
+
+- Email: hello@connectedcircles.com
+- GitHub Issues: Create an issue in this repository
+
+## 🚀 Deployment Status
+
+- **Production**: https://connectedcircles.netlify.app (or your custom domain)
+- **Repository**: https://github.com/ConnectedCirlcle/Connected_Circle_Website
+- **Build Status**: [![Netlify Status](https://api.netlify.com/api/v1/badges/your-badge-id/deploy-status)](https://app.netlify.com/sites/your-site-name/deploys)
+
+---
+
+Built with ❤️ for the Connected Circles community
