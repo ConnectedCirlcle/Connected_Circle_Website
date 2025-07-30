@@ -74,10 +74,13 @@ This project is configured for Netlify deployment with:
 Set these in your Netlify dashboard:
 
 ```
+NODE_ENV=production
 VITE_BUZZSPROUT_PODCAST_ID=2489424
-VITE_BUZZSPROUT_API_TOKEN=your_api_token
-WEB3FORMS_ACCESS_KEY=your_web3forms_key
+VITE_BUZZSPROUT_API_TOKEN=96156725a08a598bc6d43cffe30892d1
+WEB3FORMS_ACCESS_KEY=91706b95-f8a1-4d6d-b44f-5b4b878f70db
 ```
+
+**Note**: DATABASE_URL is not required for this deployment as we're using Web3Forms for all form submissions.
 
 #### Automatic Deployment:
 
