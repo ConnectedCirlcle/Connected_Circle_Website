@@ -39,7 +39,7 @@ const ConnectSection = () => {
                   href="mailto:hello@connectedcircles.com"
                   className="text-electric-blue hover:text-vibrant-green transition-colors duration-300 font-medium"
                 >
-                  hello@connectedcircles.com
+                  hello@connected-circles.com
                 </a>
                 <p className="text-gray-400 text-sm mt-1">
                   For deeper conversations and personal stories

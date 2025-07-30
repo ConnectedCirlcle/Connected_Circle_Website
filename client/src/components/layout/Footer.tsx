@@ -289,24 +289,27 @@ const Footer = () => {
               reserved.
             </p>
             <div className="flex space-x-6">
-              <a
-                href="#"
+              <Link
+                href="/privacy-policy"
+                onClick={scrollToTop}
                 className="text-gray-400 hover:text-electric-blue transition-colors duration-300 text-sm"
               >
                 Privacy Policy
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/terms-of-use"
+                onClick={scrollToTop}
                 className="text-gray-400 hover:text-electric-blue transition-colors duration-300 text-sm"
               >
                 Terms of Use
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/cookie-policy"
+                onClick={scrollToTop}
                 className="text-gray-400 hover:text-electric-blue transition-colors duration-300 text-sm"
               >
                 Cookie Policy
-              </a>
+              </Link>
             </div>
           </div>
 

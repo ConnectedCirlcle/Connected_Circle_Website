@@ -10,6 +10,9 @@ import Episodes from "@/pages/Episodes";
 import Topics from "@/pages/Topics";
 import Community from "@/pages/Community";
 import Contact from "@/pages/Contact";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import TermsOfUse from "@/pages/TermsOfUse";
+import CookiePolicy from "@/pages/CookiePolicy";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -21,6 +24,9 @@ function Router() {
       <Route path="/topics" component={Topics} />
       <Route path="/community" component={Community} />
       <Route path="/contact" component={Contact} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/terms-of-use" component={TermsOfUse} />
+      <Route path="/cookie-policy" component={CookiePolicy} />
       <Route component={NotFound} />
     </Switch>
   );
