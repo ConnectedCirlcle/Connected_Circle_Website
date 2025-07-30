@@ -1,28 +1,66 @@
-import { RustButton } from '@/components/ui/button-variants';
+import { PrimaryButton } from "@/components/ui/button-variants";
 
 const SurveySection = () => {
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-md p-8">
-      <h3 className="font-['Playfair_Display'] font-bold text-2xl mb-4">Listener Survey</h3>
-      <p className="text-[#8A8A8A] mb-6">
-        Your feedback helps us create content that truly resonates with your family's needs. 
-        This quick survey takes just 3-5 minutes to complete.
-      </p>
-      
-      {/* Survey Embed Placeholder */}
-      <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center bg-gray-50">
-        <i className="fas fa-clipboard-list text-4xl text-[#8A8A8A] mb-4"></i>
-        <h4 className="font-semibold mb-2">Heart & Household Listener Survey</h4>
-        <p className="text-[#8A8A8A] mb-4">Help us understand what topics matter most to you and your family.</p>
-        <RustButton asChild>
-          <a 
-            href="https://forms.gle/exampleSurveyLink" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            Take Survey
-          </a>
-        </RustButton>
+    <div className="relative">
+      {/* Circular accent */}
+      <div className="absolute -top-4 -left-4 w-6 h-6 rounded-full bg-gradient-to-br from-electric-blue to-vibrant-green opacity-70"></div>
+
+      <div className="bg-dark-bg/50 backdrop-blur-sm rounded-2xl p-8 border border-electric-blue/20 shadow-xl">
+        <div className="text-center">
+          <div className="relative mb-6">
+            <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gradient-to-br from-vibrant-green to-rich-violet opacity-70"></div>
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Share Your
+              <span className="bg-gradient-to-r from-electric-blue to-vibrant-green bg-clip-text text-transparent">
+                {" "}
+                Voice
+              </span>
+            </h3>
+          </div>
+
+          <p className="text-gray-300 mb-8 leading-relaxed">
+            Your insights help shape our conversations and build a stronger
+            community. Share your thoughts on personal growth, connection, and
+            the topics that matter most to you.
+          </p>
+
+          {/* Survey CTA */}
+          <div className="bg-gradient-to-br from-electric-blue/10 to-vibrant-green/10 rounded-xl p-6 mb-6 border border-electric-blue/20">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-electric-blue to-vibrant-green flex items-center justify-center">
+              <i className="fas fa-clipboard-list text-white text-xl"></i>
+            </div>
+            <h4 className="font-semibold text-white mb-2">
+              Connected Circles Listener Survey
+            </h4>
+            <p className="text-gray-400 text-sm mb-4">
+              Help us understand your growth journey and what conversations
+              resonate with you most.
+            </p>
+            <div className="text-gray-400 text-xs mb-4">
+              ⏱️ Takes 3-5 minutes • 🔒 Completely anonymous • 💡 Shapes future
+              episodes
+            </div>
+          </div>
+
+          <PrimaryButton asChild className="w-full">
+            <a
+              href="https://forms.gle/connectedcirclessurvey"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="flex items-center justify-center space-x-2">
+                <i className="fas fa-external-link-alt"></i>
+                <span>Take the Survey</span>
+              </div>
+            </a>
+          </PrimaryButton>
+
+          <p className="text-gray-500 text-xs mt-4">
+            Your feedback directly influences our content and community
+            direction
+          </p>
+        </div>
       </div>
     </div>
   );

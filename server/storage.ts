@@ -1,9 +1,8 @@
-import { 
+import {
   users, type User, type InsertUser,
   type InsertSubscriber, type Subscriber,
   type InsertContactSubmission, type ContactSubmission,
-  type InsertFocusGroupSignup, type FocusGroupSignup,
-  type InsertPollVote, type PollVote
+  type InsertFocusGroupSignup, type FocusGroupSignup
 } from "@shared/schema";
 
 // Storage interface
@@ -21,60 +20,32 @@ export interface IStorage {
   
   // Focus group signup methods
   addFocusGroupSignup(signup: InsertFocusGroupSignup): Promise<FocusGroupSignup>;
-  
-  // Poll vote methods
-  addPollVote(vote: InsertPollVote): Promise<PollVote>;
-  getPollResults(pollId: number): Promise<any>; // Returns poll results
 }
 
-// Poll option type for in-memory storage
-interface PollOptionResult {
-  id: number;
-  text: string;
-  votes: number;
-}
+// Poll option type removed
 
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
   private subscribers: Map<number, Subscriber>;
   private contactSubmissions: Map<number, ContactSubmission>;
   private focusGroupSignups: Map<number, FocusGroupSignup>;
-  private pollVotes: Map<number, PollVote>;
   
   // Track current IDs for each entity
   private userIdCounter: number;
   private subscriberIdCounter: number;
   private contactSubmissionIdCounter: number;
   private focusGroupSignupIdCounter: number;
-  private pollVoteIdCounter: number;
-  
-  // Mock poll data for demonstration
-  private polls: Map<number, { question: string, options: PollOptionResult[] }>;
 
   constructor() {
     this.users = new Map();
     this.subscribers = new Map();
     this.contactSubmissions = new Map();
     this.focusGroupSignups = new Map();
-    this.pollVotes = new Map();
     
     this.userIdCounter = 1;
     this.subscriberIdCounter = 1;
     this.contactSubmissionIdCounter = 1;
     this.focusGroupSignupIdCounter = 1;
-    this.pollVoteIdCounter = 1;
-    
-    // Initialize mock poll data
-    this.polls = new Map();
-    this.polls.set(1, {
-      question: "What topic would you like us to cover next?",
-      options: [
-        { id: 1, text: "Navigating In-Law Relationships", votes: 126 },
-        { id: 2, text: "Teaching Kids Financial Literacy", votes: 269 },
-        { id: 3, text: "Work-Life Balance for Parents", votes: 236 },
-        { id: 4, text: "Technology Boundaries for Families", votes: 211 }
-      ]
-    });
   }
 
   // User methods
@@ -122,45 +93,7 @@ export class MemStorage implements IStorage {
     return signup;
   }
   
-  // Poll vote methods
-  async addPollVote(insertVote: InsertPollVote): Promise<PollVote> {
-    const id = this.pollVoteIdCounter++;
-    const dateVoted = new Date();
-    const vote: PollVote = { ...insertVote, id, dateVoted };
-    this.pollVotes.set(id, vote);
-    
-    // Update poll results
-    const poll = this.polls.get(insertVote.pollId);
-    if (poll) {
-      const option = poll.options.find(opt => opt.id === insertVote.optionId);
-      if (option) {
-        option.votes += 1;
-      }
-    }
-    
-    return vote;
-  }
-  
-  // Get poll results
-  async getPollResults(pollId: number): Promise<any> {
-    const poll = this.polls.get(pollId);
-    if (!poll) {
-      return { error: "Poll not found" };
-    }
-    
-    const totalVotes = poll.options.reduce((sum, option) => sum + option.votes, 0);
-    
-    return {
-      question: poll.question,
-      options: poll.options.map(option => ({
-        id: option.id,
-        text: option.text,
-        votes: option.votes,
-        percentage: totalVotes > 0 ? Math.round((option.votes / totalVotes) * 100) : 0
-      })),
-      totalVotes
-    };
-  }
+  // Poll vote methods removed
 }
 
 export const storage = new MemStorage();

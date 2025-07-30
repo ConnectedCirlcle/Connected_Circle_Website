@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertContactSubmissionSchema, insertFocusGroupSignupSchema, insertSubscriberSchema, insertPollVoteSchema } from "@shared/schema";
+import { insertContactSubmissionSchema, insertFocusGroupSignupSchema, insertSubscriberSchema } from "@shared/schema";
 import { ZodError } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -54,48 +54,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post("/api/poll-vote", async (req, res) => {
-    try {
-      const data = insertPollVoteSchema.parse(req.body);
-      const vote = await storage.addPollVote(data);
-      
-      // Get updated poll results
-      const pollResults = await storage.getPollResults(data.pollId);
-      
-      res.status(201).json({ 
-        message: "Vote recorded", 
-        vote,
-        results: pollResults
-      });
-    } catch (error) {
-      if (error instanceof ZodError) {
-        res.status(400).json({ message: "Invalid data", errors: error.errors });
-      } else if (error instanceof Error) {
-        res.status(500).json({ message: error.message });
-      } else {
-        res.status(500).json({ message: "An unknown error occurred" });
-      }
-    }
-  });
-
-  // Get poll results
-  app.get("/api/poll/:pollId/results", async (req, res) => {
-    try {
-      const pollId = parseInt(req.params.pollId);
-      if (isNaN(pollId)) {
-        return res.status(400).json({ message: "Invalid poll ID" });
-      }
-      
-      const results = await storage.getPollResults(pollId);
-      res.json(results);
-    } catch (error) {
-      if (error instanceof Error) {
-        res.status(500).json({ message: error.message });
-      } else {
-        res.status(500).json({ message: "An unknown error occurred" });
-      }
-    }
-  });
+  // Poll endpoints removed
 
   const httpServer = createServer(app);
 

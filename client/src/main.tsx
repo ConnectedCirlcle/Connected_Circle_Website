@@ -3,11 +3,11 @@ import App from "./App";
 import "./index.css";
 
 // Additional CSS to match the design reference
-const style = document.createElement('style');
+const style = document.createElement("style");
 style.textContent = `
   body {
     font-family: 'Source Sans Pro', sans-serif;
-    background-color: #F8F1E6;
+    background-color: #FFFFFF;
     color: #333333;
   }
   h1, h2, h3, h4, h5 {
@@ -26,14 +26,15 @@ style.textContent = `
     position: absolute;
     top: -1.5rem;
     left: -1rem;
-    color: rgba(178, 89, 60, 0.1);
+    color: rgba(249, 178, 51, 0.1);
   }
 
   /* Custom colors */
   :root {
-    --rust-red: #B2593C;
-    --olive-green: #858461;
-    --cream-beige: #F8F1E6;
+    --dark-blue: #1E4B87;
+    --gold: #F9B233;
+    --teal: #7EADA3;
+    --white: #FFFFFF;
     --dark-text: #333333;
     --light-text: #8A8A8A;
   }

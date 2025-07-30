@@ -11,6 +11,12 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        // Connected Circles Brand Colors
+        'electric-blue': '#2d8df0',
+        'vibrant-green': '#39cb8f',
+        'rich-violet': '#862dd3',
+        'medium-purple': '#6041cb',
+        'dark-bg': '#261f2d',
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

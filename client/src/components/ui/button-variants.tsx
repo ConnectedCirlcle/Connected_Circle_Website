@@ -3,9 +3,9 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
-// Custom button variants based on the Heart & Household color palette
-const rustButtonVariants = cva(
-  "bg-[#B2593C] hover:bg-opacity-90 text-white font-semibold py-3 px-6 rounded-full transition",
+// Custom button variants based on the Connected Circles color palette
+const primaryButtonVariants = cva(
+  "bg-electric-blue hover:bg-rich-violet text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105",
   {
     variants: {
       size: {
@@ -20,8 +20,8 @@ const rustButtonVariants = cva(
   }
 );
 
-const oliveButtonVariants = cva(
-  "bg-[#858461] hover:bg-opacity-90 text-white font-semibold py-3 px-6 rounded-full transition",
+const secondaryButtonVariants = cva(
+  "bg-vibrant-green hover:bg-medium-purple text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105",
   {
     variants: {
       size: {
@@ -37,7 +37,7 @@ const oliveButtonVariants = cva(
 );
 
 const outlineButtonVariants = cva(
-  "bg-transparent border-2 border-white hover:bg-white hover:bg-opacity-10 text-white font-semibold py-3 px-6 rounded-full transition",
+  "bg-transparent border-2 border-electric-blue hover:bg-electric-blue hover:bg-opacity-10 text-electric-blue font-semibold py-3 px-6 rounded-full transition-all duration-300",
   {
     variants: {
       size: {
@@ -52,15 +52,15 @@ const outlineButtonVariants = cva(
   }
 );
 
-export interface RustButtonProps
+export interface PrimaryButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof rustButtonVariants> {
+    VariantProps<typeof primaryButtonVariants> {
   asChild?: boolean;
 }
 
-export interface OliveButtonProps
+export interface SecondaryButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof oliveButtonVariants> {
+    VariantProps<typeof secondaryButtonVariants> {
   asChild?: boolean;
 }
 
@@ -70,38 +70,45 @@ export interface OutlineButtonProps
   asChild?: boolean;
 }
 
-export const RustButton = React.forwardRef<HTMLButtonElement, RustButtonProps>(
-  ({ className, size, asChild = false, ...props }, ref) => (
-    <Button 
-      ref={ref}
-      className={cn(rustButtonVariants({ size, className }))}
-      {...props}
-      asChild={asChild}
-    />
-  )
-);
-RustButton.displayName = "RustButton";
+export const PrimaryButton = React.forwardRef<
+  HTMLButtonElement,
+  PrimaryButtonProps
+>(({ className, size, asChild = false, ...props }, ref) => (
+  <Button
+    ref={ref}
+    className={cn(primaryButtonVariants({ size, className }))}
+    {...props}
+    asChild={asChild}
+  />
+));
+PrimaryButton.displayName = "PrimaryButton";
 
-export const OliveButton = React.forwardRef<HTMLButtonElement, OliveButtonProps>(
-  ({ className, size, asChild = false, ...props }, ref) => (
-    <Button 
-      ref={ref}
-      className={cn(oliveButtonVariants({ size, className }))}
-      {...props}
-      asChild={asChild}
-    />
-  )
-);
-OliveButton.displayName = "OliveButton";
+export const SecondaryButton = React.forwardRef<
+  HTMLButtonElement,
+  SecondaryButtonProps
+>(({ className, size, asChild = false, ...props }, ref) => (
+  <Button
+    ref={ref}
+    className={cn(secondaryButtonVariants({ size, className }))}
+    {...props}
+    asChild={asChild}
+  />
+));
+SecondaryButton.displayName = "SecondaryButton";
 
-export const OutlineButton = React.forwardRef<HTMLButtonElement, OutlineButtonProps>(
-  ({ className, size, asChild = false, ...props }, ref) => (
-    <Button 
-      ref={ref}
-      className={cn(outlineButtonVariants({ size, className }))}
-      {...props}
-      asChild={asChild}
-    />
-  )
-);
+// Keep legacy exports for compatibility during transition
+export const GoldButton = PrimaryButton;
+export const TealButton = SecondaryButton;
+
+export const OutlineButton = React.forwardRef<
+  HTMLButtonElement,
+  OutlineButtonProps
+>(({ className, size, asChild = false, ...props }, ref) => (
+  <Button
+    ref={ref}
+    className={cn(outlineButtonVariants({ size, className }))}
+    {...props}
+    asChild={asChild}
+  />
+));
 OutlineButton.displayName = "OutlineButton";

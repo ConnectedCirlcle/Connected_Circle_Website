@@ -21,9 +21,14 @@ export const subscribers = pgTable("subscribers", {
   dateSubscribed: timestamp("date_subscribed").defaultNow().notNull(),
 });
 
-export const insertSubscriberSchema = createInsertSchema(subscribers).pick({
-  email: true,
-});
+// Add CSRF token validation to the subscriber schema
+export const insertSubscriberSchema = createInsertSchema(subscribers)
+  .pick({
+    email: true,
+  })
+  .extend({
+    csrfToken: z.string().optional(),
+  });
 
 // Contact Form Submissions
 export const contactSubmissions = pgTable("contact_submissions", {
@@ -35,12 +40,17 @@ export const contactSubmissions = pgTable("contact_submissions", {
   dateSubmitted: timestamp("date_submitted").defaultNow().notNull(),
 });
 
-export const insertContactSubmissionSchema = createInsertSchema(contactSubmissions).pick({
-  name: true,
-  email: true,
-  subject: true,
-  message: true,
-});
+// Add CSRF token validation to the contact submission schema
+export const insertContactSubmissionSchema = createInsertSchema(contactSubmissions)
+  .pick({
+    name: true,
+    email: true,
+    subject: true,
+    message: true,
+  })
+  .extend({
+    csrfToken: z.string().optional(),
+  });
 
 // Focus Group Signups
 export const focusGroupSignups = pgTable("focus_group_signups", {
@@ -52,25 +62,19 @@ export const focusGroupSignups = pgTable("focus_group_signups", {
   dateSubmitted: timestamp("date_submitted").defaultNow().notNull(),
 });
 
-export const insertFocusGroupSignupSchema = createInsertSchema(focusGroupSignups).pick({
-  name: true,
-  email: true,
-  familyStructure: true,
-  reason: true,
-});
+// Add CSRF token validation to the focus group signup schema
+export const insertFocusGroupSignupSchema = createInsertSchema(focusGroupSignups)
+  .pick({
+    name: true,
+    email: true,
+    familyStructure: true,
+    reason: true,
+  })
+  .extend({
+    csrfToken: z.string().optional(),
+  });
 
-// Poll Votes
-export const pollVotes = pgTable("poll_votes", {
-  id: serial("id").primaryKey(),
-  pollId: integer("poll_id").notNull(),
-  optionId: integer("option_id").notNull(),
-  dateVoted: timestamp("date_voted").defaultNow().notNull(),
-});
-
-export const insertPollVoteSchema = createInsertSchema(pollVotes).pick({
-  pollId: true,
-  optionId: true,
-});
+// Poll Votes section removed
 
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
@@ -84,5 +88,4 @@ export type ContactSubmission = typeof contactSubmissions.$inferSelect;
 export type InsertFocusGroupSignup = z.infer<typeof insertFocusGroupSignupSchema>;
 export type FocusGroupSignup = typeof focusGroupSignups.$inferSelect;
 
-export type InsertPollVote = z.infer<typeof insertPollVoteSchema>;
-export type PollVote = typeof pollVotes.$inferSelect;
+// Poll vote types removed

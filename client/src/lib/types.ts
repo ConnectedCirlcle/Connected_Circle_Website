@@ -1,4 +1,27 @@
-// Podcast Episode
+// Buzzsprout Episode (from API)
+export interface BuzzsproutEpisode {
+  id: number;
+  title: string;
+  audio_url: string;
+  artwork_url: string;
+  description: string;
+  summary: string;
+  artist: string;
+  tags: string;
+  published_at: string;
+  duration: number;
+  hq: boolean;
+  magic_mastering: boolean;
+  guid: string;
+  inactive_at: string | null;
+  episode_number: number;
+  season_number: number;
+  explicit: boolean;
+  private: boolean;
+  total_plays: number;
+}
+
+// Podcast Episode (our format)
 export interface Episode {
   id: number;
   title: string;
@@ -7,6 +30,10 @@ export interface Episode {
   duration: string;
   topics: string[];
   audioUrl: string;
+  publishedAt?: string;
+  episodeNumber?: number;
+  seasonNumber?: number;
+  totalPlays?: number;
 }
 
 // Podcast Host
